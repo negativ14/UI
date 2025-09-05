@@ -1,63 +1,52 @@
 "use client";
 import { twMerge } from "tailwind-merge";
 import { SidebarItemsProps } from "../types";
+import { AnimatePresence, motion } from "motion/react";
 import { useSidebar } from "../Sidebar";
 import SidebarToolTip from "./SidebarToolTip";
 import { useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
 
 export default function SidebarItem({
-  icon: Icon,
-  text,
-  label,
   id,
+  icon: Icon,
+  label,
+  text,
 }: SidebarItemsProps) {
-  const { activeId, setActiveId, isOpen } = useSidebar();
-  const [hovered, setHovered] = useState(false);
   const transitionBase =
-    "transition-all duration-300 group-hover:-translate-y-1 group-hover:opacity-100";
+    "opacity-70 group-hover:opacity-100 group-hover:-translate-y-0.5 transition-all duration-300";
+  const { activeId, isOpen, setActiveId, isMobile } = useSidebar();
+  const [hovered, setHovered] = useState<boolean>(false);
 
   return (
     <motion.li
       onClick={() => setActiveId(id)}
-      onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHovered(true)}
       className={twMerge(
-        "flex gap-4 cursor-pointer group hover:bg-muted-foreground/10 p-4 rounded-xl transition-all duration-300 relative",
-        `${activeId === id && "opacity-100 bg-muted-foreground/10"}`
+        "flex gap-4 items-center p-4 px-6 group hover:bg-muted-foreground/10 rounded-xl relative",
+        activeId === id && "bg-accent-foreground/10"
       )}
     >
-      <motion.div
-        layout
-        animate={{
-          marginLeft: !isOpen ? "auto" : 0,
-          marginRight: !isOpen ? "auto" : 0,
-        }}
-      >
-        <Icon
-          className={twMerge(
-            "h-6 w-auto opacity-70",
-            transitionBase,
-            `${activeId === id && "opacity-100"}`
-          )}
-        />
-      </motion.div>
+      <Icon className={twMerge("h-6 w-auto flex-shrink-0", transitionBase)} />
+      <SidebarToolTip hovered={hovered} label={label} />
 
-      <AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
         {isOpen && (
-          <motion.span
+          <motion.h2
+            layout
             initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 0.7, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden whitespace-nowrap font-heading"
+            className={twMerge(
+              "overflow-hidden whitespace-nowrap font-heading",
+              "opacity-70 group-hover:opacity-100 group-hover:-translate-y-0.5 transition-all duration-300"
+            )}
           >
             {text}
-          </motion.span>
+          </motion.h2>
         )}
       </AnimatePresence>
-
-      <SidebarToolTip hovered={hovered} label={label} />
     </motion.li>
   );
 }

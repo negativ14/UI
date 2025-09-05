@@ -10,18 +10,16 @@ export default function SidebarToolTip({
   label: string;
   hovered: boolean;
 }) {
-  const { isOpen } = useSidebar();
+  const { isOpen, isMobile } = useSidebar();
   return (
     <AnimatePresence>
-      {hovered && !isOpen && (
+      {hovered && !isMobile && !isOpen && (
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -10 }}
           transition={{ duration: 0.3, ease: "linear" }}
-          className={twMerge(
-            "absolute -right-20 -top-5 bg-orange-300 text-xs rounded-xl p-2 rounded-bl-none"
-          )}
+          className="absolute left-full top-1.5  ml-2 bg-orange-300 text-xs rounded-xl p-2 rounded-bl-none"
         >
           <p>{label}</p>
         </motion.div>

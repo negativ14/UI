@@ -6,7 +6,7 @@ import { useSidebar } from "../Sidebar";
 import { twMerge } from "tailwind-merge";
 
 export default function SidebarFooter() {
-  const { isOpen } = useSidebar();
+  const { isOpen, isMobile } = useSidebar();
   const handleLogout = () => {
     //logout logic
   };
@@ -20,11 +20,15 @@ export default function SidebarFooter() {
     >
       <motion.div
         className="flex gap-2 items-center min-w-0"
-        animate={{
-          opacity: isOpen ? 1 : 0,
-          translateX: isOpen ? 0 : -20,
-          width: isOpen ? 200 : 0,
-        }}
+        animate={
+          isMobile
+            ? {}
+            : {
+                opacity: isOpen ? 1 : 0,
+                translateX: isOpen ? 0 : -20,
+                width: isOpen ? 200 : 0,
+              }
+        }
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <Image
@@ -51,16 +55,7 @@ export default function SidebarFooter() {
         </motion.div>
       </motion.div>
 
-      <motion.span
-        layout
-        transition={{
-          duration: 0.3,
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-        }}
-        className={twMerge("flex-shrink-0", !isOpen && "mx-auto")}
-      >
+      <motion.span className={twMerge("flex-shrink-0", !isOpen && "mx-auto")}>
         <BiLogOut
           onClick={handleLogout}
           className="hover:opacity-100 opacity-70 size-6 cursor-pointer hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"

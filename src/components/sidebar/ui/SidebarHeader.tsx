@@ -2,13 +2,18 @@
 import SidebarLogo from "@/assets/icons/SidebarLogo";
 import { PanelRight, SidebarIcon } from "lucide-react";
 import { useSidebar } from "../Sidebar";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
 export default function SidebarHeader() {
-  const { setIsOpen, isOpen } = useSidebar();
+  const { setIsOpen, isOpen, isMobile } = useSidebar();
   return (
-    <motion.div className="flex justify-between items-center p-4 min-h-16">
+    <div
+      className={twMerge(
+        "flex justify-between items-center p-4 min-h-16 overflow-hidden",
+        isOpen ? "justify-between" : "justify-center"
+      )}
+    >
       <motion.div
         animate={{
           opacity: isOpen ? 1 : 0,
@@ -20,19 +25,19 @@ export default function SidebarHeader() {
         <SidebarLogo className="h-6 -ml-14" />
       </motion.div>
 
-      <span className={twMerge("flex-shrink-0", !isOpen && "mx-auto")}>
+      <AnimatePresence>
         {isOpen ? (
           <SidebarIcon
             onClick={() => setIsOpen(false)}
-            className="hover:opacity-100 opacity-70 size-5 cursor-pointer hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
+            className="hover:opacity-100 opacity-70 size-5 flex-shrink-0 cursor-pointer hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
           />
         ) : (
           <PanelRight
             onClick={() => setIsOpen(true)}
-            className="hover:opacity-100 opacity-70 size-5 cursor-pointer hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
+            className="hover:opacity-100 opacity-70 size-5 flex-shrink-0 cursor-pointer hover:scale-105 hover:-translate-y-0.5 transition-all duration-300"
           />
         )}
-      </span>
-    </motion.div>
+      </AnimatePresence>
+    </div>
   );
 }

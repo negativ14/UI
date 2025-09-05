@@ -4,6 +4,7 @@ import SidebarShell from "./ui/SidebarShell";
 import SidebarItem from "./ui/SidebarItem";
 import { SidebarContextType, SidebarItemsActiveId } from "./types";
 import { sidebarItemsMockData } from "@/data/sidebarData";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const SidebarContext = createContext<SidebarContextType | null>(null);
 
@@ -17,10 +18,11 @@ export const useSidebar = () => {
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const [activeId, setActiveId] = useState<SidebarItemsActiveId>("home");
+  const isMobile = useIsMobile();
 
   return (
     <SidebarContext.Provider
-      value={{ isOpen, setIsOpen, activeId, setActiveId }}
+      value={{ isOpen, setIsOpen, activeId, setActiveId, isMobile }}
     >
       <SidebarShell>
         {sidebarItemsMockData.map((item) => (

@@ -20,4 +20,5 @@ export type SidebarContextType = {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   activeId: SidebarItemsActiveId;
   setActiveId: React.Dispatch<React.SetStateAction<SidebarItemsActiveId>>;
+  isMobile: boolean;
 };
