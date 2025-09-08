@@ -14,7 +14,7 @@ export default function SidebarItem({
 }: SidebarItemsProps) {
   const transitionBase =
     "opacity-70 group-hover:opacity-100 group-hover:-translate-y-0.5 transition-all duration-300";
-  const { activeId, isOpen, setActiveId, isMobile } = useSidebar();
+  const { activeId, isOpen, setActiveId } = useSidebar();
   const [hovered, setHovered] = useState<boolean>(false);
 
   return (

@@ -1,5 +1,4 @@
-import { Button } from "@/components/button/Button";
-import Sidebar from "@/components/sidebar/Sidebar";
+import { Badge } from "@/components/badge/Badge";
 import { ToggleTheme } from "@/components/ui/toggle-theme";
 
 export default function Home() {
@@ -16,7 +15,11 @@ export default function Home() {
             <div className="border h-full w-full flex justify-center">
               <div className="w-full h-full bg-background p-2 overflow-hidden relative">
                 {/* render comp */}
-                <Button>Button1</Button>
+                <Badge>Badge1</Badge>
+                <Badge variant="secondary">Badge2</Badge>
+                <Badge variant="destructive">Badge3</Badge>
+                <Badge variant="outline">Badge4</Badge>
+                <br />
               </div>
             </div>
           </div>

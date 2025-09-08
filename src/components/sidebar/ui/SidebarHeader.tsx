@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { twMerge } from "tailwind-merge";
 
 export default function SidebarHeader() {
-  const { setIsOpen, isOpen, isMobile } = useSidebar();
+  const { setIsOpen, isOpen } = useSidebar();
   return (
     <div
       className={twMerge(
