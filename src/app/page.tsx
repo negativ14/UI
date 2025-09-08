@@ -1,4 +1,4 @@
-import { Badge } from "@/components/badge/Badge";
+import TailwindPattern from "@/components/backgrounds/TailwindPattern";
 import { ToggleTheme } from "@/components/ui/toggle-theme";
 
 export default function Home() {
@@ -13,13 +13,9 @@ export default function Home() {
 
           <div className="w-full flex-1 min-h-96 p-4">
             <div className="border h-full w-full flex justify-center">
-              <div className="w-full h-full bg-background p-2 overflow-hidden relative">
+              <div className="w-full h-full bg-background p-2 overflow-hidden relative ">
                 {/* render comp */}
-                <Badge>Badge1</Badge>
-                <Badge variant="secondary">Badge2</Badge>
-                <Badge variant="destructive">Badge3</Badge>
-                <Badge variant="outline">Badge4</Badge>
-                <br />
+                <TailwindPattern />
               </div>
             </div>
           </div>
