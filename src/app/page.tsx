@@ -1,5 +1,14 @@
 import TailwindPattern from "@/components/backgrounds/TailwindPattern";
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardImage,
+  CardTitle,
+} from "@/components/card/index";
 import { ToggleTheme } from "@/components/ui/toggle-theme";
+import Image from "next/image";
+import image from "@/components/card/assets/aiony-haust-3TLl_97HNJo-unsplash.jpg";
 
 export default function Home() {
   return (
@@ -13,9 +22,28 @@ export default function Home() {
 
           <div className="w-full flex-1 min-h-96 p-4">
             <div className="border h-full w-full flex justify-center">
-              <div className="w-full h-full bg-background p-2 overflow-hidden relative ">
+              <div className="w-full h-full bg-background p-2 overflow-hidden relative flex justify-center items-center gap-4">
                 {/* render comp */}
-                <TailwindPattern />
+                <Card>
+                  <CardImage>
+                    <Image
+                      src={image}
+                      fill
+                      alt="avatr"
+                      className=" object-cover group-hover:scale-105 transition-all duration-300"
+                    />
+                  </CardImage>
+                  <CardTitle>Image</CardTitle>
+
+                  <CardDescription>
+                    Passionate frontend developer crafting clean and accessible
+                    interfaces. Loves experimenting with modern UI patterns.
+                  </CardDescription>
+
+                  <CardFooter>
+                    Top-rated by 1,000+ users
+                  </CardFooter>
+                </Card>
               </div>
             </div>
           </div>
