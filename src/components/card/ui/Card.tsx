@@ -12,6 +12,7 @@ export const Card = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         {...props}
         initial="normal"
         whileHover="hover"
+        animate="normal"
         variants={cardVariant}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={cn(

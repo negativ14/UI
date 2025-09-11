@@ -1,6 +1,6 @@
 "use client";
 import { HTMLMotionProps, motion } from "motion/react";
-import { DURATION, parentVariant, STAGGER } from "../constants";
+import { DURATION, STAGGER } from "../constants";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
@@ -14,11 +14,15 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
           "relative text-2xl font-bold tracking-tight overflow-hidden whitespace-nowrap uppercase leading-5 mt-1 text-foreground/80",
           className
         )}
-        variants={parentVariant}
       >
         <motion.div
           variants={{
-            normal: {},
+            normal: {
+              transition: {
+                staggerChildren: 0.025,
+                staggerDirection: -1,
+              },
+            },
             hover: {
               transition: {
                 staggerChildren: STAGGER,
@@ -35,7 +39,7 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
                     y: 0,
                   },
                   hover: {
-                    y: -100,
+                    y: "-100%",
                     transition: {
                       duration: DURATION,
                       ease: "easeInOut",
@@ -53,7 +57,12 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         <motion.div
           className="absolute inset-0"
           variants={{
-            normal: {},
+            normal: {
+              transition: {
+                staggerChildren: 0.025,
+                staggerDirection: -1,
+              },
+            },
             hover: {
               transition: {
                 staggerChildren: STAGGER,
@@ -67,7 +76,7 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
               <motion.span
                 variants={{
                   normal: {
-                    y: 100,
+                    y: "100%",
                   },
                   hover: {
                     y: 0,
