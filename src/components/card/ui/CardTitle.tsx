@@ -15,10 +15,6 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
           className
         )}
         variants={parentVariant}
-        transition={{
-          staggerChildren: STAGGER,
-          when: "beforeChildren",
-        }}
       >
         <motion.div
           variants={{
@@ -41,7 +37,7 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
                   hover: {
                     y: -100,
                     transition: {
-                      duration: DURATION * index,
+                      duration: DURATION,
                       ease: "easeInOut",
                     },
                   },
