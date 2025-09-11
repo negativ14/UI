@@ -9,8 +9,9 @@ export const CardFooter = React.forwardRef<
     <span
       ref={ref}
       {...props}
+      
       className={cn(
-        "text-sm text-primary tracking-tight group-hover:underline underline-offset-4 font-semibold max-w-3/4 truncate",
+        "text-sm text-primary/70 tracking-tight font-semibold max-w-3/4 truncate",
         className
       )}
     />

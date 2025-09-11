@@ -30,7 +30,7 @@ export default function Home() {
                       src={image}
                       fill
                       alt="avatr"
-                      className=" object-cover group-hover:scale-105 transition-all duration-300"
+                      className=" object-cover group-hover:scale-120 transition-all duration-300"
                     />
                   </CardImage>
                   <CardTitle>Image</CardTitle>

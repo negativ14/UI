@@ -1,6 +1,6 @@
 "use client";
 import { HTMLMotionProps, motion } from "motion/react";
-import { cardVariants, DURATION, STAGGER } from "../constants";
+import { DURATION, parentVariant, STAGGER } from "../constants";
 import { cn } from "@/lib/utils";
 import * as React from "react";
 
@@ -11,63 +11,80 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         ref={ref}
         {...props}
         className={cn(
-          "relative text-xl font-bold tracking-tight overflow-hidden whitespace-nowrap uppercase leading-4",
+          "relative text-2xl font-bold tracking-tight overflow-hidden whitespace-nowrap uppercase leading-5 mt-1 text-foreground/80",
           className
         )}
-        variants={cardVariants}
+        variants={parentVariant}
+        transition={{
+          staggerChildren: STAGGER,
+          when: "beforeChildren",
+        }}
       >
         <motion.div
-          initial="normal"
           variants={{
-            normal: { y: 0 },
-            hover: { y: "-100%" },
+            normal: {},
+            hover: {
+              transition: {
+                staggerChildren: STAGGER,
+                when: "beforeChildren",
+              },
+            },
           }}
         >
           {typeof children === "string" &&
             children.split("").map((letter, index) => (
               <motion.span
-                key={index}
                 variants={{
-                  normal: { y: 0 },
-                  hover: { y: "-100%" },
-                }}
-                transition={{
-                  delay: STAGGER * index,
-                  duration: DURATION,
-                  ease: "easeInOut",
+                  normal: {
+                    y: 0,
+                  },
+                  hover: {
+                    y: -100,
+                    transition: {
+                      duration: DURATION * index,
+                      ease: "easeInOut",
+                    },
+                  },
                 }}
                 className="inline-block"
+                key={`first-${index}`}
               >
-                {letter}
+                {letter === " " ? "\u00A0" : letter}
               </motion.span>
             ))}
         </motion.div>
 
-        {/* Bottom layer */}
         <motion.div
-          initial="normal"
-          variants={{
-            normal: { y: "100%" },
-            hover: { y: 0 },
-          }}
           className="absolute inset-0"
+          variants={{
+            normal: {},
+            hover: {
+              transition: {
+                staggerChildren: STAGGER,
+                when: "beforeChildren",
+              },
+            },
+          }}
         >
           {typeof children === "string" &&
             children.split("").map((letter, index) => (
               <motion.span
-                key={index}
                 variants={{
-                  normal: { y: "100%" },
-                  hover: { y: 0 },
-                }}
-                transition={{
-                  delay: STAGGER * index,
-                  duration: DURATION,
-                  ease: "easeInOut",
+                  normal: {
+                    y: 100,
+                  },
+                  hover: {
+                    y: 0,
+                    transition: {
+                      duration: DURATION,
+                      ease: "easeInOut",
+                    },
+                  },
                 }}
                 className="inline-block"
+                key={`second-${index}`}
               >
-                {letter}
+                {letter === " " ? "\u00A0" : letter}
               </motion.span>
             ))}
         </motion.div>

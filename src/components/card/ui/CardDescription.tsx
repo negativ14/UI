@@ -1,15 +1,22 @@
+"use client";
 import { cn } from "@/lib/utils";
 import * as React from "react";
+import { HTMLMotionProps, motion } from "motion/react";
+import { descriptionVariant } from "../constants";
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  HTMLMotionProps<"div">
 >(({ className, ...props }, ref) => {
   return (
-    <div
+    <motion.div
       ref={ref}
       {...props}
-      className={cn("text-sm text-muted-foreground leading-4 line-clamp-5", className)}
+      variants={descriptionVariant}
+      className={cn(
+        "text-sm text-muted-foreground leading-4.5 line-clamp-4",
+        className
+      )}
     />
   );
 });
