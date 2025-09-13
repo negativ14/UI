@@ -24,3 +24,16 @@ export const toggleIcons = [
     icon: Strikethrough,
   },
 ];
+
+export const randomWords = [
+  "flame",
+  "microchipvsdv",
+  "node",
+  "frontendvdsvs",
+  "crystal",
+  "sky",
+  "javascriptjshdfjuwn",
+  "backbone",
+  "algorithm",
+  "frameworkcvsdfvs",
+];
