@@ -11,11 +11,12 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         ref={ref}
         {...props}
         className={cn(
-          "relative text-2xl font-bold tracking-tight overflow-hidden whitespace-nowrap uppercase leading-5 mt-1 text-foreground/80",
+          "relative text-2xl font-bold tracking-tight overflow-hidden uppercase leading-5 mt-1 text-foreground/80 whitespace-nowrap",
           className
         )}
       >
         <motion.div
+          className="w-full truncate"
           variants={{
             normal: {
               transition: {
@@ -55,7 +56,7 @@ const CardTitle = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
         </motion.div>
 
         <motion.div
-          className="absolute inset-0"
+          className="absolute inset-0 w-full truncate"
           variants={{
             normal: {
               transition: {
