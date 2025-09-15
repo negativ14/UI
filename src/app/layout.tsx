@@ -15,9 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${outfit.variable}`} suppressHydrationWarning>
-      <body
-        className={`${robotoMono.variable} antialiased `}
-      >
+      <body className={`${robotoMono.variable} antialiased `}>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

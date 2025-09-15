@@ -18,7 +18,7 @@ export default function List() {
           {hovered == word && (
             <motion.div
               layoutId="hover"
-              transition={{ type: "spring", stiffness: 100, damping: 20 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
               className="absolute inset-0 bg-accent"
             />
           )}
