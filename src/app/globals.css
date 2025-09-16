@@ -128,3 +128,13 @@
     opacity: 0.2; /* optional, makes it subtle */
   }
 }
+
+
+/* Tailwind way */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
