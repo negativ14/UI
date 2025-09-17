@@ -1,5 +1,4 @@
-import Button3 from "@/components/button/Button3";
-import Card3D from "@/components/cards/Card3D";
+import Card3 from "@/components/cards/Card3";
 import { ToggleTheme } from "@/components/ui/toggle-theme";
 
 export default function Home() {
@@ -16,7 +15,7 @@ export default function Home() {
             <div className="border h-full w-full flex justify-center">
               <div className="w-full h-full bg-background p-2 overflow-hidden relative flex  justify-center items-center gap-4">
                 {/* here rende */}
-                <Card3D />
+                <Card3 />
               </div>
             </div>
           </div>
