@@ -4,7 +4,6 @@ import {
   ClosedCaption,
   Cross,
   Plus,
-  Rocket,
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
